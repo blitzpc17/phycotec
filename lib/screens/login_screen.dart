@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:psicotec/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -8,7 +9,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AuthBackground(child: SingleChildScrollView(
+      body: AuthBackground(
+        mostrarLogo:true,
+        child: SingleChildScrollView(        
         child: Column(
           children: [
              const SizedBox( height: 250 ),              
@@ -23,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                     _LoginForm(),
                     const SizedBox(height: 50),
                     TextButton(
-                      onPressed: (){},//() => Navigator.pushReplacementNamed(context, 'register'), 
+                      onPressed: () => { context.push('/register')}, 
                       style: ButtonStyle(
                         overlayColor: MaterialStateProperty.all( Colors.indigo.withOpacity(0.1)),
                         shape: MaterialStateProperty.all( StadiumBorder() )
@@ -51,6 +54,7 @@ class _LoginForm extends StatelessWidget {
 
     return Container(
       child: Form(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: [
             InputForm(

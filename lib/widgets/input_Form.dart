@@ -11,6 +11,7 @@ class InputForm extends StatelessWidget {
   final String hintText;
   final String errorMessage;
   final IconData icono;
+  final int? noLineas;
 
   const InputForm({
     super.key, 
@@ -23,6 +24,7 @@ class InputForm extends StatelessWidget {
     required this.icono,
     this.onChanged, 
     this.validator, 
+    this.noLineas,
    });
   
 
@@ -34,7 +36,8 @@ class InputForm extends StatelessWidget {
       keyboardType: keyboardType,
       onChanged: onChanged,
       validator: validator,
-      decoration: _InputFormDecoration(label, hintText, icono)
+      decoration: _InputFormDecoration(label, hintText, icono),
+      maxLines: noLineas??1,
 
     );
   }

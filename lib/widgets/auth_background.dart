@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class AuthBackground extends StatelessWidget {
   
   final Widget child;
+  final bool mostrarLogo;
 
   const AuthBackground({
     Key? key, 
-    required this.child
+    required this.child,
+    required this.mostrarLogo
   }) : super(key: key);
 
   @override
@@ -17,15 +19,15 @@ class AuthBackground extends StatelessWidget {
         // color: Colors.red,
         width: double.infinity,
         height: double.infinity,
+        color: Colors.amberAccent,
         child: Stack(
-          children: [
-
+          children: [           
             _PurpleBox(),
             Container(
               color: Colors.black87.withOpacity(0.085),
             ),
 
-            _HeaderIcon(),            
+            mostrarLogo? _HeaderIcon():const SizedBox(height: 0),            
 
             this.child,
 
@@ -56,6 +58,7 @@ class _PurpleBox extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+   
 
     return Container(
       width: double.infinity,
