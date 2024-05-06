@@ -18,7 +18,6 @@ class LoginScreen extends StatelessWidget {
               CardContainer(
                 child: Column(
                   children: [
-
                     const SizedBox( height: 10 ),
                     Text('Bienvenido', style: Theme.of(context).textTheme.titleLarge ),
                     Text("Iniciar sesión", style: Theme.of(context).textTheme.bodyMedium),
@@ -112,7 +111,9 @@ class _LoginForm extends StatelessWidget {
                   NotificationsService.showSnackbar(errorMessage);
                   loginForm.isLoading = false;
                 }
-              }*/(){}
+              }*/(){
+                  context.push('/homes');
+              }
             ),
           ],
 
