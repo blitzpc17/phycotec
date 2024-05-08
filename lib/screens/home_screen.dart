@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:psicotec/screens/screens.dart';
+import 'package:psicotec/services/services.dart';
 
 class HomeScreen extends StatelessWidget {
   static const  name = 'home_screen';
@@ -7,9 +10,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final authservice = Provider.of<AuthService>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(        
         title:const Center(child: Text("PSICOTEC")),
+        leading: IconButton(
+          icon: Icon(Icons.login_outlined),
+          onPressed: (){
+            authservice.logout();
+            context.pushReplacementNamed(LoginScreen.name);
+          },
+        ),
       ),
       body:
       Column(
@@ -57,7 +70,8 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(height: 16.0),
                           ElevatedButton(
                             onPressed: () {
-                              context.push('/encuesta');
+                              //context.push('/encuesta');
+                              context.pushNamed(EncuestaScreen.name);
                             },
                             child: const Icon(Icons.send),
                           ),

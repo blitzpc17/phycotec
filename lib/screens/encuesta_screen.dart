@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:psicotec/model/models.dart';
 import 'package:psicotec/provider/selectState.dart';
+import 'package:psicotec/screens/screens.dart';
 import 'package:psicotec/widgets/input_Form.dart';
 
 class EncuestaScreen extends StatelessWidget {
@@ -359,7 +360,8 @@ class _EncuestaForm extends StatelessWidget {
                       )
                     ),
                     onPressed: (){
-                      context.push('/fin');
+                     // context.push('/fin');
+                      context.pushReplacementNamed(MensajeEnviadoScreen.name);
                     }
                   ),
                 ),

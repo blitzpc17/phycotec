@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:psicotec/screens/screens.dart';
 
 class MensajeEnviadoScreen extends StatelessWidget {
   static const name = 'mensaje_enviado';
@@ -25,7 +26,8 @@ class MensajeEnviadoScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Acción al presionar el botón
-                  context.push('/homes');
+                  //context.push('/homes');
+                  context.pushReplacementNamed(HomeScreen.name);
                 },
                 child: const Text('Ir al Inicio'), // Texto del botón
               ),

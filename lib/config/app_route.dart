@@ -3,7 +3,7 @@ import 'package:psicotec/screens/screens.dart';
 
 final appRouter = GoRouter(routes: [
   GoRoute(
-    path:'/',
+    path:'/login',
     name: LoginScreen.name,
     builder: (context, state) => const LoginScreen()),
 
@@ -15,6 +15,7 @@ final appRouter = GoRouter(routes: [
   GoRoute(
     path:'/homes',
     name:HomeScreen.name,
+    
     builder: (context, state) => const HomeScreen()),
 
   GoRoute(
@@ -22,11 +23,16 @@ final appRouter = GoRouter(routes: [
     name:EncuestaScreen.name,
     builder: (context, state) => const EncuestaScreen()),
 
-
   GoRoute(
     path:'/fin',
     name:MensajeEnviadoScreen.name,
     builder: (context, state) => const MensajeEnviadoScreen()),
+
+  GoRoute(
+    path:'/',
+    name:CheckAuthScreen.name,
+    builder: (context, state) => CheckAuthScreen()),
+
 
   
 
