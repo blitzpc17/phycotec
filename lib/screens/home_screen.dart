@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(        
-        title:const Center(child: Text("PSICOTEC")),
+        title:const Center(child: Text("YOLLY")),
         leading: IconButton(
           icon: Icon(Icons.login_outlined),
           onPressed: (){
