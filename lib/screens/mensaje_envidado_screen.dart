@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:psicotec/screens/screens.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MensajeEnviadoScreen extends StatelessWidget {
   static const name = 'mensaje_enviado';
@@ -31,9 +32,26 @@ class MensajeEnviadoScreen extends StatelessWidget {
                 },
                 child: const Text('Ir al Inicio'), // Texto del botón
               ),
+               const SizedBox(height: 20), // Espacio entre el texto y el botón
+              ElevatedButton(
+                onPressed: () {
+                  // Acción al presionar el botón
+                  _launchLinkCrome("http://cij.gob.mx/autodiagnostico/frmansiedad.asp");
+                },
+                child: const Text('Continuar con encuesta...'), // Texto del botón
+              ),
             ],
           ),
 
     ));
   }
+  
+  void _launchLinkCrome(String link) async {
+
+    Uri url = Uri.parse(link);
+    launchUrl(url);
+
+  }
+
+
 }
