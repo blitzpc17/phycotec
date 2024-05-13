@@ -3,6 +3,25 @@ import 'package:psicotec/model/Option.dart';
 
 class SelectState extends ChangeNotifier{
 
+
+ GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+
+ 
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  
+  set isLoading( bool value ) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
+  
+  bool isValidForm() {   
+
+    return formKey.currentState?.validate() ?? false;
+  }
+
+
   final List<Option> _lstP2 = [
     Option(label: 'Seleccione una opción', value: '-1'),
     Option(label: 'Ansiedad', value: '1'),

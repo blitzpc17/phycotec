@@ -9,7 +9,7 @@ class InputForm extends StatelessWidget {
   final String? Function(String?)? validator;
   final String label;
   final String hintText;
-  final String errorMessage;
+  final String? errorMessage;
   final IconData icono;
   final int? noLineas;
 
@@ -20,8 +20,8 @@ class InputForm extends StatelessWidget {
     required this.keyboardType, 
     required this.label, 
     required this.hintText, 
-    required this.errorMessage, 
     required this.icono,
+    this.errorMessage, 
     this.onChanged, 
     this.validator, 
     this.noLineas,

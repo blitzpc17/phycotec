@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:psicotec/model/models.dart';
+import 'package:psicotec/provider/encuesta_provider.dart';
 import 'package:psicotec/provider/selectState.dart';
 import 'package:psicotec/screens/screens.dart';
+import 'package:psicotec/services/encuesta_service.dart';
+import 'package:psicotec/services/services.dart';
 import 'package:psicotec/widgets/input_Form.dart';
 
 class EncuestaScreen extends StatelessWidget {
@@ -52,14 +56,37 @@ class _MainFormularioEncuesta extends StatelessWidget {
 }
 
 class _EncuestaForm extends StatelessWidget {
+
    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-   bool _checkboxValue = false;
+   final storage = new FlutterSecureStorage();
+   Encuesta objEncuesta = new Encuesta(
+    p1:"",
+    p2:"",
+    p3:"",
+    p4:"",
+    p5:"",
+    p6:"",
+    p7:"",
+    p8:"",
+    p9:"",
+    p10:"",
+    p11:"",
+    p12:"",
+    p13:"",
+    p14:"",
+    p15:"",
+    p16:"",
+    p17:"",
+    p18:"",
+    email: ""
+   );
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      child: Form(
         child: Form(
+         // key: selecteds,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child:Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -74,8 +101,10 @@ class _EncuestaForm extends StatelessWidget {
                   builder: (context, selectState, child){
                     return DropdownButton<Option>(
                       value: selectState.selectedOptionP2,
+                        // onChanged: ( value ) => estudiante.hermanos = value,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP2 = newValue!;
+                      objEncuesta.p1 = newValue.value.toString();
                     },
                     items: selectState.optionsP2.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -94,6 +123,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP3,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP3 = newValue!;
+                      objEncuesta.p2 = newValue.value.toString();
                     },
                     items: selectState.optionsP3.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -113,6 +143,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP4,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP4 = newValue!;
+                       objEncuesta.p3 = newValue.value.toString();
                     },
                     items: selectState.optionsP4.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -131,6 +162,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP5,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP5 = newValue!;
+                       objEncuesta.p4 = newValue.value.toString();
                     },
                     items: selectState.optionsP5.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -149,6 +181,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP6,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP6 = newValue!;
+                       objEncuesta.p5 = newValue.value.toString();
                     },
                     items: selectState.optionsP6.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -167,6 +200,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP7,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP7 = newValue!;
+                       objEncuesta.p6 = newValue.value.toString();
                     },
                     items: selectState.optionsP7.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -185,6 +219,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP8,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP8 = newValue!;
+                       objEncuesta.p7 = newValue.value.toString();
                     },
                     items: selectState.optionsP8.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -203,6 +238,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP9,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP9 = newValue!;
+                      objEncuesta.p8 = newValue.value.toString();
                     },
                     items: selectState.optionsP9.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -221,6 +257,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP10,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP10 = newValue!;
+                       objEncuesta.p9 = newValue.value.toString();
                     },
                     items: selectState.optionsP10.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -239,6 +276,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP13,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP13 = newValue!;
+                       objEncuesta.p10 = newValue.value.toString();
                     },
                     items: selectState.optionsP13.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -257,6 +295,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP14,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP14 = newValue!;
+                       objEncuesta.p11 = newValue.value.toString();
                     },
                     items: selectState.optionsP14.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -274,7 +313,10 @@ class _EncuestaForm extends StatelessWidget {
               label: "Lugar entre hermanos:", 
               hintText: "Qué lugar ocupas entre tus hermanos.", 
               errorMessage:"", 
-              icono: Icons.child_care),
+              icono: Icons.child_care,
+              onChanged: (value){
+                 objEncuesta.p12 = value.toString();
+              }),
             const SizedBox(height: 10),
                const Text("NÚMERO DE LOS HERMANAS", style: TextStyle(fontWeight: FontWeight.w700)),
                const SizedBox(height: 10),  
@@ -288,6 +330,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP11,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP11 = newValue!;
+                        objEncuesta.p13 = newValue.value.toString();
                     },
                     items: selectState.optionsP11.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -306,6 +349,7 @@ class _EncuestaForm extends StatelessWidget {
                       value: selectState.selectedOptionP12,
                       onChanged: (Option? newValue) {
                       selectState.selectedOptionP12 = newValue!;
+                        objEncuesta.p14 = newValue.value.toString();
                     },
                     items: selectState.optionsP12.map<DropdownMenuItem<Option>>((Option option) {
                       return DropdownMenuItem<Option>(
@@ -316,7 +360,7 @@ class _EncuestaForm extends StatelessWidget {
                     );
                 }),
                 const SizedBox(height: 10),  
-                 InputForm(
+                InputForm(
                   autocorrect: false, 
                   obscureText: false, 
                   keyboardType: TextInputType.text, 
@@ -324,7 +368,10 @@ class _EncuestaForm extends StatelessWidget {
                   hintText: "Cuentanos...", 
                   errorMessage:"", 
                   icono: Icons.child_care_sharp,
-                  noLineas: 10),
+                  noLineas: 10,
+                  onChanged: (value){
+                      objEncuesta.p15 = value.toString();
+                  }),
                   const SizedBox(height: 10),  
                  InputForm(
                   autocorrect: false, 
@@ -334,7 +381,11 @@ class _EncuestaForm extends StatelessWidget {
                   hintText: "Inicio, curso, tendencia, decadentes, agravantes, sintomas clave, sintomas actuales.", 
                   errorMessage:"", 
                   icono: Icons.child_care_sharp,
-                  noLineas: 10),
+                  noLineas: 10,
+                  onChanged: (value) {
+                      objEncuesta.p16 = value.toString();
+                  },
+                  ),
                   const SizedBox(height: 10),  
                 InputForm(
                   autocorrect: false, 
@@ -344,7 +395,11 @@ class _EncuestaForm extends StatelessWidget {
                   hintText: "Escribe a detalle", 
                   errorMessage:"", 
                   icono: Icons.child_care_sharp,
-                  noLineas: 10),
+                  noLineas: 10,
+                  onChanged: (value){
+                      objEncuesta.p17 = value.toString();
+                  },
+                  ),
                const SizedBox(height: 30),
                 Center(
                   child: MaterialButton(
@@ -352,17 +407,23 @@ class _EncuestaForm extends StatelessWidget {
                     disabledColor: Colors.grey,
                     elevation: 0,
                     color: Colors.blueAccent,
+                    onPressed: /*!encuestaForm.isValidForm()?null:*/ () async {
+                     // context.push('/fin');
+                      final email = await storage.read(key: 'email') ?? '';
+                      objEncuesta.email = email;
+                      final encuestaservice = Provider.of<EncuestaService>(context, listen: false);
+
+                      encuestaservice.saveOrCreateEncuesta(objEncuesta);
+                      context.pushReplacementNamed(MensajeEnviadoScreen.name);
+
+                    },
                     child: Container(
-                      padding: EdgeInsets.symmetric( horizontal: 80, vertical: 15),
-                      child: Text(
+                      padding: const EdgeInsets.symmetric( horizontal: 80, vertical: 15),
+                      child: const Text(
                       "ENVIAR", 
                         style: TextStyle( color: Colors.white ),
                       )
-                    ),
-                    onPressed: (){
-                     // context.push('/fin');
-                      context.pushReplacementNamed(MensajeEnviadoScreen.name);
-                    }
+                    )
                   ),
                 ),
 
@@ -370,7 +431,9 @@ class _EncuestaForm extends StatelessWidget {
             
               ],
             ),
-          ))),
+          )
+          
+          ),
 
     );
   }

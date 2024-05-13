@@ -134,11 +134,13 @@ class _LoginForm extends StatelessWidget {
                final String? errorMessage = await authService.login(loginForm.email, loginForm.password);
                 if ( errorMessage == null ) {
                  // Navigator.pushReplacementNamed(context, '/homes');
+                  NotificationsService.showSnackbar("Bienvenido!!!", Colors.green.shade400, Icons.check);
                   context.pushReplacementNamed(HomeScreen.name);
+                  
                 } else {
                   // TODO: mostrar error en pantalla
                   // print( errorMessage );
-                  NotificationsService.showSnackbar(errorMessage);
+                  NotificationsService.showSnackbar(errorMessage, Colors.amber.shade400, Icons.error);
                   loginForm.isLoading = false;
                 }
               }
