@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:psicotec/model/models.dart';
-import 'package:psicotec/provider/encuesta_provider.dart';
 import 'package:psicotec/provider/selectState.dart';
 import 'package:psicotec/screens/screens.dart';
 import 'package:psicotec/services/encuesta_service.dart';
-import 'package:psicotec/services/services.dart';
 import 'package:psicotec/widgets/input_Form.dart';
 
 class EncuestaScreen extends StatelessWidget {
-  static const  name = 'encuesta_screen';   
+  static const  name = 'encuesta_screen';  
   const EncuestaScreen({super.key});
 
   @override
@@ -318,9 +315,6 @@ class _EncuestaForm extends StatelessWidget {
                  objEncuesta.p12 = value.toString();
               }),
             const SizedBox(height: 10),
-               const Text("NÚMERO DE LOS HERMANAS", style: TextStyle(fontWeight: FontWeight.w700)),
-               const SizedBox(height: 10),  
-
                const SizedBox(height: 10),
                const Text("RELACIÓN CON LOS HERMANOS", style: TextStyle(fontWeight: FontWeight.w700)),
                const SizedBox(height: 10),  

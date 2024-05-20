@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:psicotec/screens/screens.dart';
-import 'package:psicotec/services/services.dart';
+import 'package:psicotec/services/auth_Service.dart';
 
-class HomeScreen extends StatelessWidget {
-  static const  name = 'home_screen';
-  const HomeScreen({super.key});
+class PsicologaScreen extends StatefulWidget {
+  static String name = "psicologa_screen";
+  const PsicologaScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<PsicologaScreen> createState() => _PsicologaScreenState();
+}
 
+class _PsicologaScreenState extends State<PsicologaScreen> {
+  @override
+  Widget build(BuildContext context) {
+    
+    
     final authservice = Provider.of<AuthService>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(        
         title:const Center(child: Text("YOLLY")),
         leading: IconButton(
-          icon: Icon(Icons.login_outlined),
+          icon: const Icon(Icons.login_outlined),
           onPressed: (){
             authservice.logout();
             context.pushReplacementNamed(LoginScreen.name);
@@ -48,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                       image: const DecorationImage(
-                      image: AssetImage('assets/card_image_encuesta.jpg'), // URL de la imagen de fondo
+                      image: AssetImage('assets/encuesta.jpg'), // URL de la imagen de fondo
                       fit: BoxFit.cover,
                       ),
                     ),
@@ -64,14 +70,14 @@ class HomeScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                              'Realiza tu encuesta',
+                              'Encuestas recibidas',
                                 style: TextStyle(fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.w700),
                               ),
                               const SizedBox(height: 16.0),
                               ElevatedButton(
                                 onPressed: () {
                                   //context.push('/encuesta');
-                                  context.pushNamed(EncuestaScreen.name);
+                                  context.pushNamed(EncuestasRecibidasScreen.name);
                                 },
                                 child: const Icon(Icons.send),
                               ),
@@ -110,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                       image: const DecorationImage(
-                      image: AssetImage('assets/consejo.webp'), // URL de la imagen de fondo
+                      image: AssetImage('assets/escribir.webp'), // URL de la imagen de fondo
                       fit: BoxFit.cover,
                       ),
                     ),
@@ -157,5 +163,7 @@ class HomeScreen extends StatelessWidget {
       
     );
   
+
+
   }
 }

@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:psicotec/model/models.dart';
 import 'package:psicotec/screens/screens.dart';
 
 final appRouter = GoRouter(routes: [
@@ -32,6 +33,25 @@ final appRouter = GoRouter(routes: [
     path:'/',
     name:CheckAuthScreen.name,
     builder: (context, state) => CheckAuthScreen()),
+
+    GoRoute(
+      path: '/psicologa',
+      name: PsicologaScreen.name,
+      builder: (context, state) => PsicologaScreen()),
+
+    GoRoute(
+      path: '/encuestasrecibidas',
+      name: EncuestasRecibidasScreen.name,
+      builder: (context, state) => EncuestasRecibidasScreen()),
+
+    GoRoute(
+      path: '/verencuesta',
+      name: VerEncuestaScreen.name,
+      builder: (context, state) {
+          final params = state.extra as Encuesta;
+          return VerEncuestaScreen(encuesta: params);
+      }
+    )
 
 
   

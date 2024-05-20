@@ -29,7 +29,7 @@ class AuthBackground extends StatelessWidget {
 
             mostrarLogo? _HeaderIcon():const SizedBox(height: 0),            
 
-            this.child,
+           this.child,
 
           ],
         ),
@@ -42,10 +42,22 @@ class _HeaderIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        width: double.infinity,
-        margin: const EdgeInsets.only( top: 30 ),
-        child: const Icon( Icons.person_pin, color: Colors.white, size: 100 ),
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Container(
+         // width: double.infinity,
+          margin: const EdgeInsets.only( top: 30 ),
+          child: Container(
+            height: 100,
+            width: 100,
+            //color: Colors.red,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              image: const DecorationImage(image: AssetImage('assets/logo.png')),
+              color: Colors.white70
+            ),
+          )//const Icon( Icons.person_pin, color: Colors.white, size: 100 ),
+        ),
       ),
     );
   }

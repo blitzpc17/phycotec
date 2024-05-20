@@ -45,7 +45,13 @@ class CheckAuthScreen extends StatelessWidget {
                   transitionDuration: Duration( seconds: 0)
                   )
                 );*/
-                context.pushReplacementNamed(HomeScreen.name);
+                
+                if(authService.emailUsuario =="psicologa@gmail.com"){
+                  context.pushReplacementNamed(PsicologaScreen.name);
+                }else{
+                  context.pushReplacementNamed(HomeScreen.name);
+                }
+               
 
               });
             }

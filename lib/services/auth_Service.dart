@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 class AuthService extends ChangeNotifier{
   final String _baseUrl = 'identitytoolkit.googleapis.com';
   final String _firebaseToken = 'AIzaSyCe9OeUJjv_yc1MA8kbT4BpsbUUA9abYsc';
+  late String? emailUsuario;
   final storage = new FlutterSecureStorage();
 
   Future<String?>createUser(String email, String password) async {
@@ -56,6 +57,7 @@ class AuthService extends ChangeNotifier{
         // decodedResp['idToken'];
         await storage.write(key: 'token', value: decodedResp['idToken']);
         await storage.write(key: 'email', value: email);
+        this.emailUsuario = email;
         return null;
     } else {
       return decodedResp['error']['message'];
@@ -70,6 +72,7 @@ class AuthService extends ChangeNotifier{
   }
 
   Future<String> readToken() async {
+    this.emailUsuario = await storage.read(key:'email');
     return await storage.read(key: 'token') ?? '';
   }
 
