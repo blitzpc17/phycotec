@@ -12,6 +12,7 @@ class InputForm extends StatelessWidget {
   final String? errorMessage;
   final IconData icono;
   final int? noLineas;
+  final TextEditingController? controller;
 
   const InputForm({
     super.key, 
@@ -25,6 +26,7 @@ class InputForm extends StatelessWidget {
     this.onChanged, 
     this.validator, 
     this.noLineas,
+    this.controller
    });
   
 
@@ -38,7 +40,7 @@ class InputForm extends StatelessWidget {
       validator: validator,
       decoration: _InputFormDecoration(label, hintText, icono),
       maxLines: noLineas??1,
-
+      controller: controller,
     );
   }
 

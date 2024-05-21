@@ -33,15 +33,14 @@ class _EncuestasRecibidasScreenState extends State<EncuestasRecibidasScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("YOLLY")),
-        leading: IconButton(
-          icon: const Icon(Icons.logout),
-          onPressed: () {
-            //authService.logout();
-            context.pushReplacementNamed(LoginScreen.name);
-          },
-        ),
-      ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              context.pop();
+            },
+          ),
+          title: const Text('ENCUESTA')
+      ), 
       body: ListView.builder(
         itemCount: encuestaService.encuestas.length,
         itemBuilder: (context, index) {
