@@ -36,7 +36,7 @@ class MensajeEnviadoScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Acción al presionar el botón
-                  _launchLinkCrome("http://cij.gob.mx/autodiagnostico/frmansiedad.asp");
+                  _launchLinkCrome("https://fundacionsyu.org.ar/la-obesidad-desconocida/ansiedad_escala_de_ansiedad_test_de_hamilton_dr_ruben_merciel.php?gad_source=1");
                 },
                 child: const Text('Continuar con encuesta...'), // Texto del botón
               ),
